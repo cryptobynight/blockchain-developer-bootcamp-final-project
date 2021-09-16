@@ -4,4 +4,4 @@ I would like to build a website that allows users to upload any PDF document and
 
 The user could visit the site, upload the PDF, mint as NFT, send to personal wallet (or directly to required receipient). The user would also be advised how to burn the NFT if no longer required.
 
-Possibility for self destruct on timer?
+Possibility for self destruct on timer? Update Test 2
