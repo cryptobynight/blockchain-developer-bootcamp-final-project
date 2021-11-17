@@ -3,6 +3,12 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 module.exports = {
 
+<<<<<<< HEAD
+=======
+  
+
+
+>>>>>>> c7dd98602b7ed838bafaa96251c4850e2bb81588
   networks: {
    
     development: {

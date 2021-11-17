@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "short_name": "DH",
     "name": "Diamond Hands NFT",
+=======
+    "short_name": "NFT Template",
+    "name": "NFT Starter Template with React",
+>>>>>>> c7dd98602b7ed838bafaa96251c4850e2bb81588
     "icons": [
       {
         "src": "favicon.ico",
