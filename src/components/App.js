@@ -4,7 +4,6 @@ import Diamonds from '../abis/Diamonds.json';
 import {MDBCard, MDBCardBody, MDBCardTitle} from 'mdb-react-ui-kit';
 import './App.css';
 import {diamondbox, diamondcolor} from './Colors.js';
-// import detectEthereumProvider from "@metamask/detect-provider";
 
 class App extends Component {
 
@@ -16,7 +15,6 @@ class App extends Component {
     async loadWeb3() {
         if (window.ethereum) {
           window.web3 = new Web3(window.ethereum)
-            //   await window.ethereum.enable()
             await window.ethereum.send('eth_requestAccounts')
         }
         else if (window.web3) {
@@ -30,7 +28,6 @@ class App extends Component {
     async loadBlockchainData() {
         const web3 = window.web3
         const accounts = await web3.eth.getAccounts()
-        // const accounts = await ethereum.request({ method: 'eth_accounts' });
         this.setState({account:accounts[0]})
 
         //get contract
@@ -86,10 +83,10 @@ class App extends Component {
             })
         })
         .on('confirmation', function(confNumber, receipt, latestBlockHash){ 
-            window.alert("Congratulations! Your diamond has been mined!")
+            window.alert("Congratulations! Your diamond has been mined!\n\nPlease refresh page to see in wallet.")
         })
         .on('error', function(error){ 
-            window.alert("Mint failed!\n\nDiamond may already be mined.")
+            window.alert("Mint failed!\n\nDiamond may already be mined or mine is empty.")
         })
     }
 
@@ -181,8 +178,8 @@ class App extends Component {
 
                 <div className='container-fluid mt-1'>
                     <div className='row'>
-                        <main className='col-lg-12'>
-                            <div>
+                        <main className='col-lg-12 text-center'>
+                            <div className='content mr-auto ml-auto'>
                                 <h1 style={{color:'black', fontSize: '7rem'}}>
                                     Diamond Hands
                                 </h1>
@@ -229,7 +226,7 @@ class App extends Component {
                     Welcome to Diamond Hands - the diamond mine for unique, generative NFTs.
                     </p>
                     <p>
-                    Diamonds are all uniquely mined and one of a kind. Each diamond can only be owned by a single person.
+                    Diamonds are all uniquely mined and one of a kind. Each diamond can only be owned by a single person and only 7777 diamonds will ever be mined.
                     </p>
                     <p>
                     Every diamond is algorithmically generated and assigned a unique chemistry. 
