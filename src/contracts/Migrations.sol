@@ -1,6 +1,9 @@
-// SPDX-License-Identifier: MIT
+/// SPDX-License-Identifier: MIT
 pragma solidity 0.8.10;
-// >=0.4.22 <0.9.0;
+
+/// @title Migrations contract
+/// @notice Contract allows updates and upgrades for migrations
+/// @author CryptoByNight
 
 contract Migrations {
   address public owner = msg.sender;
@@ -18,7 +21,6 @@ contract Migrations {
     last_completed_migration = completed;
   }
 
-  //write function to allow upgrade of migrations
   function upgrade(address new_address) public restricted {
     Migrations upgraded = Migrations(new_address);
     upgraded.setCompleted(last_completed_migration);

@@ -1,5 +1,10 @@
-// SPDX-License-Identifier: MIT
+/// SPDX-License-Identifier: MIT
 pragma solidity 0.8.10;
+
+/// @title Main NFT contract
+/// @notice Generative NFT marketplace to mint and send
+/// @author CryptoByNight
+/// @dev This is the main contract, with inheritance from Connector and other nested contracts like ERC721, Enumerable and Metadata
 
 import './ERC721Connector.sol';
 
@@ -12,12 +17,17 @@ contract Diamonds is ERC721Connector {
         uint256 diamondId;
     }
 
+    /// @notice Array of diamonds (NFTs) 
     Diamond[] public diamonds;
+    /// @notice Maximum supply constant
     uint256 public constant MINING_LIMIT = 7777;
+    /// @notice Counter to track against maximum supply limit
     Counters.Counter public miningCounter;
 
     mapping(string => bool) diamondExists;
 
+    /// @notice Main minting function with ownable modifier from OpenZeppelin
+    /// @param _diamond String for randomly generated diamond to be minted - generated on front end and passeed through
     function mint(string memory _diamond) public onlyOwner {
         require(miningCounter.current() < MINING_LIMIT, "Total cap reached.");
         require(!diamondExists[_diamond], "Sorry, that token already exists.");
@@ -38,6 +48,7 @@ contract Diamonds is ERC721Connector {
 
     }
 
+    /// @notice Constructor for token name and symbol
     constructor() ERC721Connector('Diamond Hands', 'DH') {}
 
 }

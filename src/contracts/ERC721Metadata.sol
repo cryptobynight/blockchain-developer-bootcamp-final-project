@@ -1,8 +1,12 @@
-// SPDX-License-Identifier: MIT
+/// SPDX-License-Identifier: MIT
 pragma solidity 0.8.10;
 
 import './interfaces/IERC721Metadata.sol';
 import './ERC165.sol';
+
+/// @title Metadata contract
+/// @notice Optional extension for ERC-721 Standard
+/// @author CryptoByNight
 
 contract ERC721Metadata is IERC721Metadata, ERC165 {
 
@@ -18,10 +22,12 @@ contract ERC721Metadata is IERC721Metadata, ERC165 {
         _symbol = symbolised;
     }
 
+    /// @return Name of token passed in from constructor and main contract
     function name() external view override returns(string memory) {
         return _name;
     }
 
+    /// @return Symbol of token passed in from constructor and main contract
     function symbol() external view override returns(string memory) {
         return _symbol;
     }

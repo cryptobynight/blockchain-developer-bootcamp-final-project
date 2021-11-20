@@ -30,7 +30,7 @@ class App extends Component {
         const accounts = await web3.eth.getAccounts()
         this.setState({account:accounts[0]})
 
-        //get contract
+        /// Get contract
         const networkId = await web3.eth.net.getId();
         const networkData = Diamonds.networks[networkId];
 
@@ -40,15 +40,15 @@ class App extends Component {
             const contract = new web3.eth.Contract(abi, address);
             this.setState({contract})
 
-            //get total supply
+            /// Get total supply
             const totalSupply = await contract.methods.totalSupply().call()
             this.setState({totalSupply})
 
-            //get my supply (for user)
+            /// Get my supply (for user)
             const mySupply = await contract.methods.tokensOfOwner(this.state.account).call()
             this.setState({mySupply})
             
-            //load diamonds
+            /// Load all diamonds
             for(let i = 0; i < totalSupply; i++) {
                 const diamond = await contract.methods.diamonds(i).call()
                 this.setState({
@@ -56,14 +56,11 @@ class App extends Component {
                 })
             }
 
-            //load mydiamonds (for user)
+            /// Load mydiamonds (for user)
             for(let i = 0; i < mySupply.length; i++) {
                 const index = mySupply[i]
-                // const myDiamond = await contract.methods.diamonds(index).call()
                 const temp = await contract.methods.diamonds(index).call()
                 const myDiamond = [temp.chemistry, temp.diamondId]
-                //create const for diamond index from main list, use as key
-                //const diamondIndex = await contract.methods. -- use ownedTokenIndex from Enumerable
                 
                 this.setState({
                     myDiamonds:[...this.state.myDiamonds, myDiamond]
@@ -83,7 +80,8 @@ class App extends Component {
             })
         })
         .on('confirmation', function(confNumber, receipt, latestBlockHash){ 
-            window.alert("Congratulations! Your diamond has been mined!\n\nPlease refresh page to see in wallet.")
+            window.alert("Congratulations! Your diamond has been mined!")
+            window.location.reload(false)
         })
         .on('error', function(error){ 
             window.alert("Mint failed!\n\nDiamond may already be mined or mine is empty.")
@@ -93,13 +91,9 @@ class App extends Component {
     transfer = (to, diamondId) => {
         console.log(diamondId)
         this.state.contract.methods.transferFrom(this.state.account, to, diamondId).send({from:this.state.account})
-        // .once('receipt', (receipt) => {
-        //     this.setState({
-        //         diamonds:[...this.state.diamonds, diamond]
-        //     })
-        // })
         .on('confirmation', function(confNumber, receipt, latestBlockHash){ 
-            window.alert("Your diamond has been transferred.\n\nPlease refresh the page to see changes.")
+            window.alert("Your diamond has been transferred.")
+            window.location.reload(false)
         })
         .on('error', function(error){ 
             window.alert("Transfer failed.\n\nPlease check your details and try again.")
@@ -129,7 +123,7 @@ class App extends Component {
     generateSparkle() {
         var num = Math.floor(Math.random() * 2);
         
-        // Case 0: solid, Case 1: solid + flicker, Case 2: none
+        /// Case 0: solid, Case 1: solid + flicker, Case 2: none
         switch (num) {
             case 0:
                 var sparkle = '1xxxxxxx ';
@@ -201,7 +195,6 @@ class App extends Component {
 
                                 <form onSubmit={(event) => {
                                     event.preventDefault()
-                                    // const diamond = this.diamond.value
                                     
                                     const backgroundcolor = this.generateBackground()
                                     const diamondbody = this.generateDiamondColor()
@@ -210,7 +203,6 @@ class App extends Component {
                                     const left_imp = this.generateImperfection()
                                     const small_sparkle = this.generateSparkle() + 'small_sparkle'
                                     const big_sparkle = this.generateSparkle() + 'big_sparkle'
-                                    // const diamond_num = this.state.diamonds.length + 1
                                     const diamond = backgroundcolor + diamondbody + mid_imp + top_imp + left_imp + small_sparkle + big_sparkle
                                     
                                     this.mint(diamond)
@@ -291,7 +283,6 @@ class App extends Component {
                                             </div>
                                             <MDBCardBody>
                                                 <MDBCardTitle>Diamond #{diamond[1].toString()}</MDBCardTitle> 
-                                                {/* {diamond.substring(59)}             */}
                                             </MDBCardBody>
                                         </MDBCard>
                                     </div>
