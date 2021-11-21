@@ -30,7 +30,7 @@ class App extends Component {
         const accounts = await web3.eth.getAccounts()
         this.setState({account:accounts[0]})
 
-        /// Get contract
+        // Get contract
         const networkId = await web3.eth.net.getId();
         const networkData = Diamonds.networks[networkId];
 
@@ -40,15 +40,15 @@ class App extends Component {
             const contract = new web3.eth.Contract(abi, address);
             this.setState({contract})
 
-            /// Get total supply
+            // Get total supply
             const totalSupply = await contract.methods.totalSupply().call()
             this.setState({totalSupply})
 
-            /// Get my supply (for user)
+            // Get my supply (for user)
             const mySupply = await contract.methods.tokensOfOwner(this.state.account).call()
             this.setState({mySupply})
             
-            /// Load all diamonds
+            // Load all diamonds
             for(let i = 0; i < totalSupply; i++) {
                 const diamond = await contract.methods.diamonds(i).call()
                 this.setState({
@@ -56,7 +56,7 @@ class App extends Component {
                 })
             }
 
-            /// Load mydiamonds (for user)
+            // Load mydiamonds (for user)
             for(let i = 0; i < mySupply.length; i++) {
                 const index = mySupply[i]
                 const temp = await contract.methods.diamonds(index).call()
@@ -123,7 +123,7 @@ class App extends Component {
     generateSparkle() {
         var num = Math.floor(Math.random() * 2);
         
-        /// Case 0: solid, Case 1: solid + flicker, Case 2: none
+        // Case 0: solid, Case 1: solid + flicker, Case 2: none
         switch (num) {
             case 0:
                 var sparkle = '1xxxxxxx ';
@@ -142,19 +142,61 @@ class App extends Component {
         return sparkle;
     }
 
+    viewAllButton(props) {
+        return (
+          <button onClick={props.onClick} className='btn btn-colour-1' style={{fontSize:'0.6em'}}>
+            See All Diamonds
+          </button>
+        );
+      }
+      
+      viewMyButton(props) {
+        return (
+          <button onClick={props.onClick} className='btn btn-colour-1' style={{fontSize:'0.6em'}}>
+            Reload My Diamonds
+          </button>
+        );
+      }
+
+    viewAllDiamondsClick() {
+        this.setState({allDiamondView: true})
+    }
+
+    viewMyDiamondsClick() {
+        window.location.reload(false)
+    }
+
     constructor(props) {
         super(props);
+        this.viewAllDiamondsClick = this.viewAllDiamondsClick.bind(this);
+        this.viewMyDiamondsClick = this.viewMyDiamondsClick.bind(this);
         this.state = {
             account: '',
             contract: null,
             totalSupply: 0,
             mySupply: [],
-            diamonds:[],
-            myDiamonds:[]
+            diamonds: [],
+            myDiamonds: [],
+            allDiamondView: false
         }
     }
 
     render() {
+
+        const allDiamondView = this.state.allDiamondView;
+        let currentView;
+        let currentTitle;
+        let diamondButton;
+        if (allDiamondView) {
+            currentView = this.state.diamonds
+            currentTitle = 'All Diamonds'
+            diamondButton = <this.viewMyButton onClick={this.viewMyDiamondsClick}/>
+        } else {
+            currentView = this.state.myDiamonds
+            currentTitle = 'My Diamonds'
+            diamondButton = <this.viewAllButton onClick={this.viewAllDiamondsClick}/>
+        }
+
         return (
             <div className='container-full'>
                 <nav className='navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow'>
@@ -209,6 +251,7 @@ class App extends Component {
                                 }}>
                                     <input type='submit' className='btn btn-colour-1' value='Mine Diamond' style={{marginTop:'40px'}}/>
                                 </form>
+
                             </div>
                         </main>
                     </div>
@@ -255,12 +298,14 @@ class App extends Component {
 
                     <hr></hr>
 
-                    <h1 style={{color:'black', fontSize: '3rem'}}>
-                            My Diamonds
+                    <h1 style={{color:'black', fontSize: '4rem'}}>
+                        {currentTitle}
                     </h1>
+                    
+                    {diamondButton}
 
                     <div className='row textCenter'>
-                        {this.state.myDiamonds.map((diamond, key) => 
+                        {currentView.map((diamond, key) => 
                         { 
                             return (
                                 <div key={diamond}> 
