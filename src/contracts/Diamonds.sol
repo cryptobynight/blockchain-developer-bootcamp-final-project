@@ -28,7 +28,9 @@ contract Diamonds is ERC721Connector {
 
     /// @notice Main minting function with ownable modifier from OpenZeppelin
     /// @param _diamond String for randomly generated diamond to be minted - generated on front end and passeed through
-    function mint(string memory _diamond) public onlyOwner {
+    /// @dev Contract is set up to add onlyOwner to this function if you want to limit the mining function to the owner.
+    /// For this version, we left it so anyone can mint because it's more fun :)
+    function mint(string memory _diamond) public {
         require(miningCounter.current() < MINING_LIMIT, "Total cap reached.");
         require(!diamondExists[_diamond], "Sorry, that token already exists.");
 

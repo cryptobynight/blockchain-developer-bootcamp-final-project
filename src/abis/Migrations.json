@@ -3164,18 +3164,18 @@
     "3": {
       "events": {},
       "links": {},
-      "address": "0x9c0339725Df867D5B088ea8D93B922c735390A32",
-      "transactionHash": "0x8ceef31b875433aea0aa8c4addc4e8d2e9b3422267b72f6fecd36633f15b3051"
+      "address": "0xC44e5CfeCaA529db4345200f58Ad32190706C9a6",
+      "transactionHash": "0x02d185e15290421fd4c87f91ba4ae98f92d48600584dff2cc077376dfb2bdf47"
     },
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xF895cf24f4075cbb01F328555932Ba830805CE85",
-      "transactionHash": "0x3c619cafc42665f309edf7d704a525c569ae8fb2accc8f429da3e5d51c5f6505"
+      "address": "0x2B1ca2175E7FcB0d66442b6380433738af077E85",
+      "transactionHash": "0x946ea01f43d467581249f4d9814440d5751f464aaf51cf3f7191975f6adf5dc2"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-11-21T14:21:53.385Z",
+  "updatedAt": "2021-11-22T20:41:02.876Z",
   "networkType": "ethereum",
   "devdoc": {
     "author": "CryptoByNight",
