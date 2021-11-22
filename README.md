@@ -8,7 +8,9 @@ Smart contracts are written with Solidity and the frontend is written in JavaScr
 * Download extension in browser you'll be using (I recommend [Brave Browser](https://brave.com/))
 ## How to Use
 * Go to [Diamond Hands](https://diamondhandsnft.netlify.app/)
+* * https://diamondhandsnft.netlify.app/
 * Make sure your MetaMask wallet is connect to the Ropsten testnet
+* * If you don't have Ropsten test Ether you can search online for a faucet to have some sent to you
 * Login with MetaMask
 ### Mining Diamonds
 * Simply click the `Mine Diamond` button and approve the transaction to mine a diamond
@@ -47,6 +49,7 @@ Smart contracts are written with Solidity and the frontend is written in JavaScr
 * * If it doesn't, refresh the page and ensure your local Ganache network is selected in MetaMask along with the correct imported account
 ## Developer Notes
 ### Directory
+* `designAndSecuirty`: Files for `design pattern decisions` and `avoiding common attacks`
 * `migrations`: Migration files for deploying contracts in `src/contracts`
 * `public`: Frontend files `favicon.ico` and `index.html`
 * `src`: ABIs, smart contracts and React frontend

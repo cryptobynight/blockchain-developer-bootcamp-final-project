@@ -21,7 +21,7 @@ class App extends Component {
           window.web3 = new Web3(window.web3.currentProvider)
         }
         else {
-          window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+          window.alert('Non-Ethereum browser detected. Check out MetaMask!')
         }
       }
 
@@ -68,7 +68,7 @@ class App extends Component {
             }
     
         } else {
-            window.alert("Smart contract not deployed.")
+            window.alert("Smart contract not deployed\n\nCheck that you're on the Ropsten testnet.")
         }
     }
 
