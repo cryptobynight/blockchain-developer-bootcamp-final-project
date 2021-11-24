@@ -26,7 +26,7 @@ Smart contracts are written with Solidity and the frontend is written in JavaScr
 * Transfer a diamond to a friend on Ropsten or another wallet of your own to test
 * View all diamonds in the collection by toggling the list view at the bottom
 ### Screencast Link
-[Demo](https://www.loom.com/share/82595e43f2e647edb03ff7e7a461e810)
+[Demo](https://www.loom.com/share/b92690d3970b4fa0ad7b7df02ce22aa9)
 ## Run Locally (Developers):
 ### Required:
 * Node.js >= v14
