@@ -269,7 +269,7 @@ class App extends Component {
                     </p>
                     <p>
                     Attributes are another story. Big sparkles and small sparkles, if you're lucky enough to get them, will be solid or flickering.
-                    Imperfections are common and there three different locations. Imperfections are either there or they're not, and there's a 1 in 5 chance of each individual imperfection.
+                    Imperfections are common and there are three possible locations. Imperfections are either there or they're not, and there's a 1 in 5 chance of each individual imperfection.
                     </p>
                     <p>
                     A flawless diamond will have zero imperfections and two flickering sparkles. Your odds of mining a flawless diamond of any colour combination are 1 in 1,125 - or 0.09%.
