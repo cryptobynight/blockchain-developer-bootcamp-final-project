@@ -37,11 +37,12 @@ Smart contracts are written with Solidity and the frontend is written in JavaScr
 * Clone this repository to your local machine
 * Run `npm install` to install all dependencies
 * Run local testnet on port `7545` with Ganache
-* Ensure truffle-config.js file is added to project in Ganache
-* Import an account from Ganache to MetaMask if you haven't already ([See here](https://www.trufflesuite.com/docs/truffle/getting-started/truffle-with-metamask/))
+* * Ensure truffle-config.js file is added to project in Ganache
+* Set up Custom RPC network on Metamask and import an account from Ganache to MetaMask if you haven't already ([See here](https://www.trufflesuite.com/docs/truffle/getting-started/truffle-with-metamask/))
+* * Chain ID is typically 1337 if you need to enter for Custom RPC setup in MetaMask
+* `test` to run local tests in Truffle console
 * `truffle migrate --network development` or `sudo truffle migrate --network development`
 * `truffle console --network development` or `sudo truffle console --network development`
-* `test` to run local tests in Truffle console
 ### Frontend Setup
 * `npm run start`
 * If browser doesn't automically open, go to http://localhost:3000/
