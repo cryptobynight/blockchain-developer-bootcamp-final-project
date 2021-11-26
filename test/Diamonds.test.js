@@ -1,4 +1,5 @@
 const {assert} = require('chai')
+const {expect} = require('chai')
 
 const Diamonds = artifacts.require('./Diamonds');
 
@@ -8,7 +9,7 @@ require('chai')
 
 contract('Diamonds', (accounts) => {
     let contract
-    // before hook tells our tests to run this first
+    // Before hook tells our tests to run this first
     before( async() => {
         contract = await Diamonds.deployed()
     })
@@ -46,7 +47,6 @@ contract('Diamonds', (accounts) => {
         })
     })
 
-    // FIX THIS TEST
     describe('Check that diamonds are indexed properly', async() => {
         it('List all diamonds', async() => {
             await contract.mint('NFT_2')
@@ -66,6 +66,25 @@ contract('Diamonds', (accounts) => {
 
             let expectedResult = ['NFT_1','NFT_2','NFT_3','NFT_4','NFT_5']
             assert.equal(diamonds.join(','), expectedResult.join(','))
+        })
+    })
+
+    describe('Only owner can transfer', async() => {
+        it('Transfer NFT Success', async() => {
+            const transferred = await contract.transferFrom(accounts[0],accounts[1],0)
+            const ownerOf = await contract.ownerOf(0)
+
+            assert.equal(ownerOf, accounts[1])
+            const event = transferred.logs[0].args
+            assert.equal(event._from, accounts[0])
+            assert.equal(event._to, accounts[1])
+            assert.equal(event._tokenId, 0)
+        })
+
+        it('Try to transfer diamond owned by another wallet', async() => {
+            
+            await expect(contract.transferFrom(accounts[0],accounts[2],0)).to.be.rejectedWith(Error)
+            
         })
     })
 
