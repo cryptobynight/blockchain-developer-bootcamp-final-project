@@ -8,9 +8,9 @@ Smart contracts are written with Solidity and the frontend is written in JavaScr
 * Download extension in browser you'll be using (I recommend [Brave Browser](https://brave.com/))
 ## How to Use
 * Go to [Diamond Hands](https://diamondhandsnft.netlify.app/)
-* * https://diamondhandsnft.netlify.app/
+  * https://diamondhandsnft.netlify.app/
 * Make sure your MetaMask wallet is connect to the Ropsten testnet
-* * If you don't have Ropsten test Ether you can search online for a faucet to have some sent to you
+  * If you don't have Ropsten test Ether you can search online for a faucet to have some sent to you
 * Login with MetaMask
 ### Mining Diamonds
 * Simply click the `Mine Diamond` button and approve the transaction to mine a diamond
@@ -18,7 +18,7 @@ Smart contracts are written with Solidity and the frontend is written in JavaScr
 ### Transferring Diamonds
 * Type the diamond ID located under the diamond (it must be owned by you)
 * Copy in the address of another Ethereum wallet where you'd like to send your token and press `Transfer`
-* * You can switch between accounts to see the update of wallets and there's also a notification to show that the transfer was successful
+  * You can switch between accounts to see the update of wallets and there's also a notification to show that the transfer was successful
 ### Showing All Diamonds
 * The `See All Diamonds` button will show you all diamonds mined - even those that aren't in your wallet
 * After this button is pressed, you can press the `Reload My Diamonds` button to refresh the page and see your diamonds again
@@ -37,9 +37,9 @@ Smart contracts are written with Solidity and the frontend is written in JavaScr
 * Clone this repository to your local machine
 * Run `npm install` to install all dependencies
 * Run local testnet on port `7545` with Ganache
-* * Ensure truffle-config.js file is added to project in Ganache
+  * Ensure truffle-config.js file is added to project in Ganache
 * Set up Custom RPC network on Metamask and import an account from Ganache to MetaMask if you haven't already ([See here](https://www.trufflesuite.com/docs/truffle/getting-started/truffle-with-metamask/))
-* * Chain ID is typically 1337 if you need to enter for Custom RPC setup in MetaMask
+  * Chain ID is typically 1337 if you need to enter for Custom RPC setup in MetaMask
 * `test` to run local tests in Truffle console
 * `truffle migrate --network development` or `sudo truffle migrate --network development`
 * `truffle console --network development` or `sudo truffle console --network development`
@@ -47,16 +47,16 @@ Smart contracts are written with Solidity and the frontend is written in JavaScr
 * `npm run start`
 * If browser doesn't automically open, go to http://localhost:3000/
 * Your MetaMask wallet should automatically connect
-* * If it doesn't, refresh the page and ensure your local Ganache network is selected in MetaMask along with the correct imported account
+  * If it doesn't, refresh the page and ensure your local Ganache network is selected in MetaMask along with the correct imported account
 ## Developer Notes
 ### Directory
 * `designAndSecuirty`: Files for `design pattern decisions` and `avoiding common attacks`
 * `migrations`: Migration files for deploying contracts in `src/contracts`
 * `public`: Frontend files `favicon.ico` and `index.html`
 * `src`: ABIs, smart contracts and React frontend
-* * `abis`: ABI files for the project
-* * `components`: Frontend React files
-* * `contracts`: Interfaces, libraries and contracts deployed on Ropsten testnet
+  * `abis`: ABI files for the project
+  * `components`: Frontend React files
+  * `contracts`: Interfaces, libraries and contracts deployed on Ropsten testnet
 * `test`: Smart contract unit tests
 ### Design Patterns and Attack Vectors
 * [Design Pattern Decisions](/designAndSecurity/design_pattern_decisions.md)
