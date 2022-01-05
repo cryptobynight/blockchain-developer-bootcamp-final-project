@@ -7,6 +7,6 @@
 ## Access Control Design Patterns
 * OpenZeppelin's `Ownable` is imported and `onlyOwner` is used in the `setCompleted` and `upgrade` functions in the `Migrations` contract
 * OpenZeppelin's `Ownable` is set up to be used in the `mint` function in the main `Diamonds` contract (simply add `onlyOwner` as a modifier to restrict minting to owner of the contract)
-* * This was originally implemented but removed for the demo version since it's more fun have public minting
+* * This was originally implemented but removed for the demo version since it's more fun to have public minting
 ## Upgradable Contracts
 * An `upgrade` function was added to the `Migrations` contract
